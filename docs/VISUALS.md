@@ -2,7 +2,7 @@
 
 - `original-run-1.png` 与 `original-run-2.png` 原样提取自用户提供的 Word 文档，分别展示历史 MobileNetV2 模型结构与训练曲线。
 - `workflow.png` 为内置 ImageGen 生成的概念说明图，不是运行截图。
-- `cnn-runtime.jpg` 是本次实际加载 CNN 模型后运行 Jupyter 推理记录的浏览器截图；`sample-herb.jpg` 是公开数据集中的输入样本。
+- `sample-herb.jpg` 是公开数据集中的推理输入样本。
 
 ## 工作流插画提示词
 

@@ -11,7 +11,7 @@
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.20-FF6F00?logo=tensorflow&logoColor=white)
 ![Classes](https://img.shields.io/badge/Classes-72-386641)
 
-[直接使用模型](#直接使用已训练模型) · [真实推理截图](#实际推理运行记录) · [项目思路](#项目思路) · [历史运行记录](#历史运行记录) · [开始训练](#开始训练) · [数据集仓库](https://github.com/kayaduster607-jpg/chinese-herbal-dataset) · [⭐ Star](https://github.com/kayaduster607-jpg/chinese-herbal-recognition/stargazers)
+[直接使用模型](#直接使用已训练模型) · [实验结果](#实验报告中的训练结果) · [项目思路](#项目思路) · [历史运行记录](#历史运行记录) · [开始训练](#开始训练) · [数据集仓库](https://github.com/kayaduster607-jpg/chinese-herbal-dataset) · [⭐ Star](https://github.com/kayaduster607-jpg/chinese-herbal-recognition/stargazers)
 
 </div>
 
@@ -43,11 +43,11 @@ python infer_cnn.py --image docs/images/sample-herb.jpg
 
 **结果说明：**此模型输出 72 个分类分数，脚本显示得分最高的 5 个类别索引。由于目前没有找到这份 CNN 模型训练时保存的类别索引表，也未核实其原始预处理流程，暂不能可靠地将索引转换为药材名称；当前演示采用 RGB、150 × 150、像素除以 255。该模型与下方历史 MobileNetV2 实验是两套不同的模型。
 
-### 实际推理运行记录
+### 实验报告中的训练结果
 
-![真实 CNN 模型推理运行截图](docs/images/cnn-runtime.jpg)
+![实验报告中 MobileNetV2 模型的训练与验证曲线](docs/images/original-run-2.png)
 
-上图是使用公开 CNN 权重和仓库样例图片，在 TensorFlow 2.20.0 中实际执行的 Jupyter 推理记录。可用仓库中的 `cnn-inference-demo.ipynb` 复现；默认从 `weights/` 加载模型，也可通过 `HERBAL_MODEL_PATH` 指定路径。
+上图原样提取自实验报告，展示 MobileNetV2 训练过程中的准确率与损失变化；该历史实验与上方可下载的 CNN 模型是两套模型。
 
 ## 项目思路
 
@@ -67,10 +67,6 @@ python infer_cnn.py --image docs/images/sample-herb.jpg
 ### 实际模型结构
 
 ![从 Word 提取的 MobileNetV2 结构截图](docs/images/original-run-1.png)
-
-### 实际训练曲线
-
-![从 Word 提取的历史训练与验证曲线](docs/images/original-run-2.png)
 
 Word 记录显示，该次 MobileNetV2 实验在早停后恢复第 11 轮的最佳权重，并报告**测试集准确率 62.35%**。这是用户提供的历史记录，不是本次重新训练的测量值；复现实验时，数据划分和结果可能不同。
 
