@@ -1,0 +1,7 @@
+# 已在本机核对的版本；训练需 TensorFlow 平台兼容环境。
+tensorflow==2.20.0
+numpy==2.1.3
+Pillow==11.1.0
+pandas==2.2.3
+scikit-learn==1.6.1
+matplotlib==3.10.0
