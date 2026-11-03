@@ -11,7 +11,7 @@
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.20-FF6F00?logo=tensorflow&logoColor=white)
 ![Classes](https://img.shields.io/badge/Classes-72-386641)
 
-[项目思路](#项目思路) · [历史运行记录](#历史运行记录) · [开始训练](#开始训练) · [数据集仓库](https://github.com/kayaduster607-jpg/chinese-herbal-dataset) · [⭐ Star](https://github.com/kayaduster607-jpg/chinese-herbal-recognition/stargazers)
+[直接使用模型](#直接使用已训练模型) · [真实推理截图](#实际推理运行记录) · [项目思路](#项目思路) · [历史运行记录](#历史运行记录) · [开始训练](#开始训练) · [数据集仓库](https://github.com/kayaduster607-jpg/chinese-herbal-dataset) · [⭐ Star](https://github.com/kayaduster607-jpg/chinese-herbal-recognition/stargazers)
 
 </div>
 
@@ -20,6 +20,34 @@
 ![中草药图像分类工作流概念图](docs/images/workflow.png)
 
 > 上图为项目流程插画；下方模型结构和曲线原样提取自项目提供的 Word 运行记录。
+
+## 直接使用已训练模型
+
+**无需重新训练，也无需下载整个数据集。** 已训练的 CNN 模型（约 229 MB）保存在本仓库的 [Release](https://github.com/kayaduster607-jpg/chinese-herbal-recognition/releases/tag/cnn-baseline-v1)。克隆项目并安装依赖后，下载一次即可对自己的图片运行预测：
+
+```bash
+git clone https://github.com/kayaduster607-jpg/chinese-herbal-recognition.git
+cd chinese-herbal-recognition
+python -m venv .venv
+```
+
+激活环境：Windows PowerShell 使用 `.\.venv\Scripts\Activate.ps1`；macOS / Linux 使用 `source .venv/bin/activate`。然后运行：
+
+```bash
+python -m pip install -r requirements.txt
+python download_model.py
+python infer_cnn.py --image docs/images/sample-herb.jpg
+```
+
+`download_model.py` 会从 Release 下载模型至 `weights/` 并检查 SHA-256；模型已存在且校验通过时不会重新下载。将 `--image` 换成自己的图片路径即可；也可以使用 `--model` 指定已下载的模型文件。
+
+**结果说明：**此模型输出 72 个分类分数，脚本显示得分最高的 5 个类别索引。由于目前没有找到这份 CNN 模型训练时保存的类别索引表，也未核实其原始预处理流程，暂不能可靠地将索引转换为药材名称；当前演示采用 RGB、150 × 150、像素除以 255。该模型与下方历史 MobileNetV2 实验是两套不同的模型。
+
+### 实际推理运行记录
+
+![真实 CNN 模型推理运行截图](docs/images/cnn-runtime.jpg)
+
+上图是使用公开 CNN 权重和仓库样例图片，在 TensorFlow 2.20.0 中实际执行的 Jupyter 推理记录。可用仓库中的 `cnn-inference-demo.ipynb` 复现；默认从 `weights/` 加载模型，也可通过 `HERBAL_MODEL_PATH` 指定路径。
 
 ## 项目思路
 
@@ -105,6 +133,9 @@ python train.py --data-dir ../chinese-herbal-dataset/images --output-dir outputs
 
 ```text
 train.py                       # 可配置的 MobileNetV2 训练入口
+download_model.py              # 下载并校验已发布的 CNN 模型
+infer_cnn.py                   # 直接用 CNN 模型预测单张图片
+cnn-inference-demo.ipynb       # CNN 推理演示
 original-experiment.ipynb      # 保留的原始实验
 requirements.txt               # 已核对环境的依赖版本
 tests/                         # 数据划分回归
