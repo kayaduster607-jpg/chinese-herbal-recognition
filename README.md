@@ -50,9 +50,13 @@ Word 记录显示，该次 MobileNetV2 实验在早停后恢复第 11 轮的最�
 
 本机发现的 `chinese_medicine_classifier_simple.h5` 是另一套 **150 × 150 输入的普通 CNN**，输出 72 维；它不是上图的 MobileNetV2 权重。该文件已实际加载并对一张测试图片执行前向推理，但原始 CNN 训练代码和类别索引尚未找到，不能把该次结果与 MobileNetV2 指标混用。
 
+经作者确认，CNN 权重已单独发布：[下载基线模型](https://github.com/kayaduster607-jpg/chinese-herbal-recognition/releases/tag/cnn-baseline-v1)（228,894,808 字节）。SHA-256：`52cf58e685c82511120d425dd4c48f834a30bebe905482458d8f4fec2bb1381d`。模型输出索引对应的类别需先核实。
+
 ## 数据集
 
 独立公开的 [中草药图像数据集](https://github.com/kayaduster607-jpg/chinese-herbal-dataset) 包含 **72 类、7,176 张 JPG 图片**。用户提供的原始目录有两张无法完整解码的白芍图像，公开副本中已排除；原盘内容保持不变。
+
+公开副本与原训练目录的 7,176 张同名图片逐文件 SHA-256 一致，且均已通过完整解码检查。
 
 数据仓库不包含固定划分。`train.py` 使用种子和排序后的文件名逐类生成 70% / 15% / 15% 划分，保存类别索引；因此它提供可复现的新划分，不保证与历史实验完全一致。
 
