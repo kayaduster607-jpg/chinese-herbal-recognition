@@ -1,6 +1,7 @@
 # 图片来源
 
 - `original-run-1.png` 与 `original-run-2.png` 原样提取自用户提供的 Word 文档，分别展示历史 MobileNetV2 模型结构与训练曲线。
+- `report-prediction-maidong.png` 原样提取自用户提供的另一份中草药实验报告，展示 MobileNetV2 对麦冬样本的单张预测结果。
 - `workflow.png` 为内置 ImageGen 生成的概念说明图，不是运行截图。
 - `sample-herb.jpg` 是公开数据集中的推理输入样本。
 

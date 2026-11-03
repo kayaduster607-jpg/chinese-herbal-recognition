@@ -11,7 +11,7 @@
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.20-FF6F00?logo=tensorflow&logoColor=white)
 ![Classes](https://img.shields.io/badge/Classes-72-386641)
 
-[直接使用模型](#直接使用已训练模型) · [实验结果](#实验报告中的训练结果) · [项目思路](#项目思路) · [历史运行记录](#历史运行记录) · [开始训练](#开始训练) · [数据集仓库](https://github.com/kayaduster607-jpg/chinese-herbal-dataset) · [⭐ Star](https://github.com/kayaduster607-jpg/chinese-herbal-recognition/stargazers)
+[预测示例](#实验报告中的预测示例) · [直接使用模型](#直接使用已训练模型) · [实验结果](#实验报告中的训练结果) · [项目思路](#项目思路) · [历史运行记录](#历史运行记录) · [开始训练](#开始训练) · [数据集仓库](https://github.com/kayaduster607-jpg/chinese-herbal-dataset) · [⭐ Star](https://github.com/kayaduster607-jpg/chinese-herbal-recognition/stargazers)
 
 </div>
 
@@ -19,7 +19,15 @@
 
 ![中草药图像分类工作流概念图](docs/images/workflow.png)
 
-> 上图为项目流程插画；下方模型结构和曲线原样提取自项目提供的 Word 运行记录。
+> 上图为项目流程插画；下方预测图、模型结构和训练曲线均来自项目提供的实验报告。
+
+## 实验报告中的预测示例
+
+<p align="center">
+  <img src="docs/images/report-prediction-maidong.png" alt="实验报告中麦冬图像的预测结果：Maidong 99.36%" width="480">
+</p>
+
+实验报告中的 MobileNetV2 单张图片预测：**麦冬（Maidong），模型输出分数 99.36%**。这是该样本的预测分数，不代表模型在整个测试集上的准确率。图中实验与下方提供下载的 CNN 模型是两套不同模型。
 
 ## 直接使用已训练模型
 
